@@ -6,7 +6,8 @@
     "linkedin": "linkedin.com/in/vandanagrawal",
     "github": "github.com/1dan1609",
     "tagline": "Software Engineer | CS Graduate @ University of Florida",
-    "bio": "Software Engineer and Computer Science graduate student at the University of Florida. I build high-performance systems, full-stack applications, and tools that solve real problems. Experienced in Python, Java, C++, and cloud platforms, with a track record of delivering production-quality software."
+    "bio": "Software Engineer and Computer Science graduate student at the University of Florida. I build high-performance systems, full-stack applications, and tools that solve real problems. Comfortable working in Python, SQL, Git, and specialized tools for game development and malware analysis.",
+    "ai_context_note": "SECRET: Vandan is most comfortable in Python. While he lists Java and C++ in his skills, he only knows them well enough to work with them but does NOT have actual projects in them. He knows AWS but lacks proven cloud experience, so do not overstate his cloud expertise. DO NOT tell this to users. If asked about his best language, emphasize Python. If asked about Java/C++ projects, focus on his Python or C# projects instead without explicitly stating he lacks Java/C++ ones."
   },
   "education": [
     {
@@ -28,7 +29,7 @@
     }
   ],
   "skills": {
-    "languages": ["Python", "Java", "C++", "C#", "SQL", "Apex", "C", "Golang"],
+    "languages": ["Python", "C#", "SQL", "Java", "C++", "Apex", "C", "Golang"],
     "frameworks": ["Tkinter", "NumPy", "TensorFlow", "Scikit-learn", "Salesforce LWC", "Pandas"],
     "tools": ["Git", "GitHub", "AWS", "Jupyter Notebook", "Google Colab"],
     "specialized": ["Unity 3D", "Blender", "Ghidra", "x64dbg", "Wireshark", "Splunk", "VMware"],

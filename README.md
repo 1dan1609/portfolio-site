@@ -50,3 +50,4 @@ A sleek, terminal-inspired developer portfolio featuring a fully integrated Gemi
 The site uses a "Single Source of Truth" architecture. All data (skills, projects, experience, bio) is stored in `content/portfolio-data.json`. 
 
 When the site builds, the React components map over this JSON to generate the UI. When a user queries the AI Chatbot, this same JSON is seamlessly injected into the Gemini System Prompt at runtime, ensuring the AI always has the most up-to-date context about the portfolio without requiring model fine-tuning.
+

@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Vandan Agrawal — CS Engineer & Cybersecurity Specialist",
     description:
-      "Explore Vandan's projects, experience, and skills in cybersecurity and software engineering.",
+      "Explore Vandan's projects, experience, and skills in Software Engineering and Development.",
     type: "website",
   },
 };

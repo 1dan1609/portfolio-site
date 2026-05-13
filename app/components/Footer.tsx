@@ -34,7 +34,7 @@ export default function Footer() {
             Let&apos;s Build Something
           </h2>
           <p className="text-terminal-muted text-sm max-w-md mx-auto mb-10">
-            Open to new opportunities in cybersecurity and software engineering.
+            Open to new opportunities in Software Engineering and Development.
             Reach out via email or connect on LinkedIn.
           </p>
 
