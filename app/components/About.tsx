@@ -59,7 +59,7 @@ export default function About() {
         >
           <motion.div variants={item}>
             <div className="flex items-center gap-3 mb-6">
-              <span className="font-mono text-xs text-terminal-muted">// education</span>
+              <span className="font-mono text-xs text-terminal-muted">{"// education"}</span>
             </div>
             <div className="grid md:grid-cols-2 gap-4">
               {education.map((edu) => (
