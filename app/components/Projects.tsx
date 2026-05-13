@@ -223,8 +223,7 @@ export default function Projects() {
           transition={{ delay: 0.6 }}
           className="mt-8 font-mono text-xs text-terminal-subtle text-center"
         >
-          <span className="text-terminal-green">$</span> More projects loading... add yours in{" "}
-          <code className="text-terminal-blue">content/portfolio-data.json</code>
+          <span className="text-terminal-green">$</span> More projects loading...
         </motion.div>
       </div>
     </section>

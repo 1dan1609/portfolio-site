@@ -14,8 +14,9 @@
       "school": "University of Florida",
       "degree": "Master of Science in Computer Science",
       "gpa": "3.66",
-      "dates": "December 2025",
-      "location": "Gainesville, FL"
+      "dates": "Aug 2024 – Dec 2025",
+      "location": "Gainesville, FL",
+      "ai_context_note": "Graduated in December 2025. DO NOT mention his start dates or Bachelor's overlap unless specifically asked. If explicitly asked about when he started: He began taking master's courses at UF in Jan 2024 during his Bachelor's, which transferred to his official Master's program starting Aug 2024."
     },
     {
       "id": "amity-btech",

@@ -38,6 +38,24 @@ export default function Chat() {
   const [loading, setLoading] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+  const chatPanelRef = useRef<HTMLDivElement>(null);
+
+  // Close chat on click outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        open &&
+        chatPanelRef.current &&
+        !chatPanelRef.current.contains(event.target as Node)
+      ) {
+        const fab = document.getElementById("chat-fab");
+        if (fab && fab.contains(event.target as Node)) return;
+        setOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, [open]);
 
   // Scroll to bottom on new messages
   useEffect(() => {
@@ -89,10 +107,7 @@ export default function Chat() {
           content: data.response,
           timestamp: new Date(),
         };
-        setMessages((prev) => {
-          if (prev.length === 1) setIsMaximized(true);
-          return [...prev, aiMsg];
-        });
+        setMessages((prev) => [...prev, aiMsg]);
       } catch (err: unknown) {
         const aiMsg: Message = {
           id: (Date.now() + 1).toString(),
@@ -136,10 +151,11 @@ export default function Chat() {
         {open && (
           <motion.div
             id="chat-panel"
-            initial={{ opacity: 0, scale: 0.92, y: 20 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.92, y: 20 }}
-            transition={{ type: "spring", damping: 20 }}
+            ref={chatPanelRef}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: "100%" }}
+            transition={{ type: "spring", damping: 25, stiffness: 200 }}
             className={`fixed bottom-6 right-6 z-50 flex flex-col terminal-window shadow-glow-green transition-all duration-300 ${
               isMaximized
                 ? "w-[800px] max-w-[calc(100vw-2rem)] h-[80vh] max-h-[calc(100vh-2rem)]"

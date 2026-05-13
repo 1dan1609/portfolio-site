@@ -22,22 +22,7 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Active section tracking
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) setActive(entry.target.id);
-        });
-      },
-      { threshold: 0.4 }
-    );
-    ["about", "experience", "projects", "contact"].forEach((id) => {
-      const el = document.getElementById(id);
-      if (el) observer.observe(el);
-    });
-    return () => observer.disconnect();
-  }, []);
+
 
   return (
     <>
@@ -69,6 +54,7 @@ export default function Navbar() {
               <a
                 key={item.href}
                 href={item.href}
+                onClick={() => setActive(item.short)}
                 className={`font-mono text-xs px-3 py-1.5 rounded transition-all duration-200 ${
                   active === item.short
                     ? "text-terminal-green bg-terminal-green/10 border border-terminal-green/30"
@@ -106,7 +92,10 @@ export default function Navbar() {
                 <a
                   key={item.href}
                   href={item.href}
-                  onClick={() => setMobileOpen(false)}
+                  onClick={() => {
+                    setMobileOpen(false);
+                    setActive(item.short);
+                  }}
                   className="font-mono text-sm px-3 py-2 rounded text-terminal-muted hover:text-terminal-green hover:bg-bg-elevated transition-all"
                 >
                   <span className="text-terminal-green mr-2">$</span>
