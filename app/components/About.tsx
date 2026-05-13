@@ -23,7 +23,7 @@ const CATEGORY_LABELS: Record<string, string> = {
 export default function About() {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-100px" });
-  const { skills, education } = portfolioData;
+  const { skills } = portfolioData;
 
   const container = {
     hidden: {},
@@ -48,40 +48,6 @@ export default function About() {
           className="section-heading mb-12"
         >
           <span className="text-terminal-green">$</span> cat skills.txt
-        </motion.div>
-
-        {/* Education block */}
-        <motion.div
-          variants={container}
-          initial="hidden"
-          animate={inView ? "show" : "hidden"}
-          className="mb-14"
-        >
-          <motion.div variants={item}>
-            <div className="flex items-center gap-3 mb-6">
-              <span className="font-mono text-xs text-terminal-muted">{"// education"}</span>
-            </div>
-            <div className="grid md:grid-cols-2 gap-4">
-              {education.map((edu) => (
-                <div key={edu.id} className="terminal-card p-5">
-                  <div className="flex items-start justify-between gap-4">
-                    <div>
-                      <div className="font-semibold text-terminal-white">{edu.school}</div>
-                      <div className="text-terminal-muted text-sm mt-1">{edu.degree}</div>
-                    </div>
-                    <div className="text-right flex-shrink-0">
-                      <div className="font-mono text-xs text-terminal-green border border-terminal-green/30 px-2 py-0.5 rounded">
-                        {edu.dates}
-                      </div>
-                      <div className="font-mono text-xs text-terminal-muted mt-1">
-                        GPA: {edu.gpa}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </motion.div>
         </motion.div>
 
         {/* Skills grid */}

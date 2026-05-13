@@ -6,6 +6,7 @@ import { Menu, X, Terminal } from "lucide-react";
 
 const NAV_ITEMS = [
   { label: "--about", href: "#about", short: "about" },
+  { label: "--education", href: "#education", short: "education" },
   { label: "--experience", href: "#experience", short: "experience" },
   { label: "--projects", href: "#projects", short: "projects" },
   { label: "--contact", href: "#contact", short: "contact" },

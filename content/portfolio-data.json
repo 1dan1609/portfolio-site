@@ -72,13 +72,30 @@
   ],
   "projects": [
     {
+      "id": "portfolio-site",
+      "name": "Personal Portfolio Website",
+      "tagline": "AI-Powered Terminal-Style Developer Portfolio",
+      "tech": ["Next.js 14", "TypeScript", "Tailwind CSS", "Framer Motion", "Gemini AI", "Vercel"],
+      "status": "completed",
+      "github": "https://github.com/1dan1609/portfolio-site",
+      "demo": "https://vandanagrawal.vercel.app/",
+      "description": "A terminal-themed developer portfolio with an integrated Gemini AI chatbot, built end-to-end with AI assistance and deployed to production on Vercel at zero cost.",
+      "bullets": [
+        "Designed and deployed a full-stack Next.js 14 portfolio end-to-end using AI-assisted development, from architecture to production on Vercel.",
+        "Integrated a Gemini AI chatbot with a dynamic system prompt fed by a single JSON knowledge base, enabling context-aware responses about skills and experience.",
+        "Architected a data-driven content layer where a single JSON file drives all UI components and the AI's knowledge base simultaneously.",
+        "Shipped a production-grade web app with zero hosting cost, leveraging Vercel's free tier and Google Gemini's API within free usage limits."
+      ],
+      "files": []
+    },
+    {
       "id": "gatorglide",
       "name": "GatorGlide Delivery Co.",
       "tagline": "Logistics Order Management System",
       "tech": ["Python", "AVL Tree", "Hash Map", "Data Structures"],
       "status": "completed",
       "github": null,
-      "demo": null,
+      "demo": "https://drive.google.com/drive/folders/1rBVOcPE566xk-lNvdKTlGLTzeCnuPot1",
       "description": "A high-performance logistics order management system built around dual AVL trees for O(log n) order priority and ETA synchronization, with O(1) hash-map lookups for real-time order state validation.",
       "bullets": [
         "Engineered a dual AVL Tree-based system to synchronize order priorities and ETAs in O(log n).",
@@ -94,7 +111,7 @@
       "tech": ["Python", "MySQL", "Tkinter", "RBAC"],
       "status": "completed",
       "github": null,
-      "demo": null,
+      "demo": "https://drive.google.com/drive/folders/1mTXzjd85EjiR4SVBFPxl8xhKez-i6tAc",
       "description": "Full-stack pharmacy retail management software with Python front-end and back-end, MySQL data persistence, and role-based access control for secure employee workflows.",
       "bullets": [
         "Developed sales software for a model pharmacy using Python for both front-end and back-end with MySQL integration.",
@@ -112,7 +129,7 @@
       "tech": ["Unity 3D", "Blender", "C#", "Game Design"],
       "status": "completed",
       "github": null,
-      "demo": null,
+      "demo": "https://drive.google.com/drive/folders/1uifzGsVxijNDS8Yc0fEdYgV31hT-cpb8",
       "description": "A 3D physics-based mobile game built in Unity with original assets created in Blender. Players strategically place barriers on a downhill slope to shield characters from cascading obstacles.",
       "bullets": [
         "Prototyped and optimized a 3D physics-based game in Unity, writing C# scripts for object spawning, game logic, and score tracking.",
