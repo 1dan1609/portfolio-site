@@ -1,36 +1,52 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Terminal Portfolio Site
 
-## Getting Started
+A sleek, terminal-inspired developer portfolio featuring a fully integrated Gemini AI Chatbot, Git-history style timelines, and a seamless data-driven content architecture. Built with Next.js 14, Tailwind CSS, and Framer Motion.
 
-First, run the development server:
+## ✨ Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- 🤖 **Integrated AI Assistant**: A built-in chat widget powered by Google's Gemini 3 Flash model that can answer specific questions about my experience, projects, and skills.
+- 💻 **Terminal Aesthetic**: Deeply immersive developer theme featuring boot-up sequences, typewriter animations, and Mac-style window controls.
+- 🌳 **Git-History Timeline**: Work experience and education are presented visually as a Git commit history tree.
+- 📄 **Data-Driven**: The entire site (and the AI's knowledge base) is driven by a single JSON file, making updates incredibly simple without touching UI code.
+- ⚡ **Highly Optimized**: Built on Next.js 14 App Router for maximum performance and SEO.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🛠️ Tech Stack
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Framework**: [Next.js 14](https://nextjs.org/) (App Router)
+- **Language**: [TypeScript](https://www.typescriptlang.org/)
+- **Styling**: [Tailwind CSS](https://tailwindcss.com/)
+- **Animations**: [Framer Motion](https://www.framer.com/motion/)
+- **AI Integration**: [Google Generative AI SDK](https://ai.google.dev/) (Gemini 3 Flash)
+- **Icons**: [Lucide React](https://lucide.dev/)
+- **Deployment**: [Vercel](https://vercel.com/)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🚀 Running Locally
 
-## Learn More
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/1dan1609/portfolio-site.git
+   cd portfolio-site
+   ```
 
-To learn more about Next.js, take a look at the following resources:
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+3. **Set up environment variables**
+   Create a `.env.local` file in the root directory and add your Google Gemini API key:
+   ```env
+   GEMINI_API_KEY=your_api_key_here
+   ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+4. **Start the development server**
+   ```bash
+   npm run dev
+   ```
+   Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-## Deploy on Vercel
+## 📁 Architecture Overview
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+The site uses a "Single Source of Truth" architecture. All data (skills, projects, experience, bio) is stored in `content/portfolio-data.json`. 
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+When the site builds, the React components map over this JSON to generate the UI. When a user queries the AI Chatbot, this same JSON is seamlessly injected into the Gemini System Prompt at runtime, ensuring the AI always has the most up-to-date context about the portfolio without requiring model fine-tuning.

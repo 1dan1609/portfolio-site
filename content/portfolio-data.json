@@ -1,0 +1,139 @@
+{
+  "personal": {
+    "name": "Vandan Agrawal",
+    "email": "vandanagrawal1203@gmail.com",
+    "phone": "+1 (352) 721-8261",
+    "linkedin": "linkedin.com/in/vandanagrawal",
+    "github": "github.com/1dan1609",
+    "tagline": "Software Engineer | CS Graduate @ University of Florida",
+    "bio": "Software Engineer and Computer Science graduate student at the University of Florida. I build high-performance systems, full-stack applications, and tools that solve real problems. Experienced in Python, Java, C++, and cloud platforms, with a track record of delivering production-quality software."
+  },
+  "education": [
+    {
+      "id": "uf-ms",
+      "school": "University of Florida",
+      "degree": "Master of Science in Computer Science",
+      "gpa": "3.66",
+      "dates": "December 2025",
+      "location": "Gainesville, FL"
+    },
+    {
+      "id": "amity-btech",
+      "school": "Amity University",
+      "degree": "Bachelor of Technology in Computer Science and Engineering",
+      "gpa": "3.18",
+      "dates": "May 2024",
+      "location": "India"
+    }
+  ],
+  "skills": {
+    "languages": ["Python", "Java", "C++", "C#", "SQL", "Apex", "C", "Golang"],
+    "frameworks": ["Tkinter", "NumPy", "TensorFlow", "Scikit-learn", "Salesforce LWC", "Pandas"],
+    "tools": ["Git", "GitHub", "AWS", "Jupyter Notebook", "Google Colab"],
+    "specialized": ["Unity 3D", "Blender", "Ghidra", "x64dbg", "Wireshark", "Splunk", "VMware"],
+    "os": ["Windows", "Linux (Debian, Kali, Ubuntu)", "macOS"]
+  },
+  "experience": [
+    {
+      "id": "cybersec-intern-2025",
+      "role": "Cybersecurity Analyst Intern",
+      "company": "Malware Reverse Engineering Lab",
+      "dates": "January 2025 – May 2025",
+      "type": "internship",
+      "commitHash": "a3f9c12",
+      "branch": "feat/malware-analysis",
+      "tags": ["Cybersecurity", "Ghidra", "x64dbg", "Wireshark", "YARA", "Reverse Engineering"],
+      "bullets": [
+        "Reverse-engineered 10+ real-world malware samples, analyzing direct system calls in x64 assembly to identify execution flow, persistence mechanisms, C2 channels, and IOCs for rapid incident response.",
+        "Performed 60+ hours of static and dynamic analysis using Ghidra, Wireshark, and x64dbg on a multi-system sandbox to extract execution paths and network indicators.",
+        "Delivered 4 technical reports highlighting obfuscation techniques and behavioral signatures to assist incident response teams in threat detection and mitigation.",
+        "Dissected a variant of the Akira ransomware as a final project, documenting behavior and IOCs — Akira has impacted over 250 small-to-medium American organizations since March 2023.",
+        "Authored YARA rules for 5+ malware families by documenting behavioral and threat-actor signatures, improving endpoint security to detect payload variants."
+      ]
+    },
+    {
+      "id": "swe-intern-2023",
+      "role": "Software Developer Intern",
+      "company": "SmartInternz",
+      "dates": "May 2023 – July 2023",
+      "type": "internship",
+      "commitHash": "7b2e841",
+      "branch": "feat/salesforce-platform",
+      "tags": ["Salesforce", "Apex", "LWC", "REST API", "Cloud"],
+      "bullets": [
+        "Customized and deployed 20+ Salesforce objects, workflows, and permission models to enforce secure, role-based access control and streamline business operations.",
+        "Engineered asynchronous Apex triggers and batch processes to handle high-concurrency data without exceeding multi-tenant governor limits, improving system responsiveness by 15%.",
+        "Automated security compliance monitoring using Shield Platform Encryption and Security Health Check, reducing manual data-integrity reviews by 60% for 5,000+ sensitive records.",
+        "Orchestrated asynchronous REST integrations and complex Screen Flows to automate 500+ weekly transactions across 3 cross-functional simulated departments."
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "id": "gatorglide",
+      "name": "GatorGlide Delivery Co.",
+      "tagline": "Logistics Order Management System",
+      "tech": ["Python", "AVL Tree", "Hash Map", "Data Structures"],
+      "status": "completed",
+      "github": null,
+      "demo": null,
+      "description": "A high-performance logistics order management system built around dual AVL trees for O(log n) order priority and ETA synchronization, with O(1) hash-map lookups for real-time order state validation.",
+      "bullets": [
+        "Engineered a dual AVL Tree-based system to synchronize order priorities and ETAs in O(log n).",
+        "Implemented automated state-validation using O(1) hash-map lookups and conditional logic to compare real-time timestamps against calculated departure windows for invalid order cancellations.",
+        "Architected an automated validation suite to parse input test data and cross-reference system output against baseline files, ensuring 100% logical accuracy across regression testing cycles."
+      ],
+      "files": []
+    },
+    {
+      "id": "medex",
+      "name": "MEDEX",
+      "tagline": "A Pharmacy Retail Software",
+      "tech": ["Python", "MySQL", "Tkinter", "RBAC"],
+      "status": "completed",
+      "github": null,
+      "demo": null,
+      "description": "Full-stack pharmacy retail management software with Python front-end and back-end, MySQL data persistence, and role-based access control for secure employee workflows.",
+      "bullets": [
+        "Developed sales software for a model pharmacy using Python for both front-end and back-end with MySQL integration.",
+        "Designed a secure login system using First Day Passwords for safe employee onboarding.",
+        "Implemented data retention for customers, employees, inventory, and billing using mysql-connector.",
+        "Enforced role-based access control to limit feature access by employee post.",
+        "Architected backend processes with field sanity checks to reduce vulnerability surface."
+      ],
+      "files": []
+    },
+    {
+      "id": "hillrush",
+      "name": "Hill Rush",
+      "tagline": "A Physics-Based 3D Mobile Game",
+      "tech": ["Unity 3D", "Blender", "C#", "Game Design"],
+      "status": "completed",
+      "github": null,
+      "demo": null,
+      "description": "A 3D physics-based mobile game built in Unity with original assets created in Blender. Players strategically place barriers on a downhill slope to shield characters from cascading obstacles.",
+      "bullets": [
+        "Prototyped and optimized a 3D physics-based game in Unity, writing C# scripts for object spawning, game logic, and score tracking.",
+        "Created all game assets including terrain, obstacles, and characters using Blender.",
+        "Designed the core gameplay loop: players place temporary barriers on an inclined slope to prevent falling objects from hitting characters crossing a road."
+      ],
+      "files": []
+    }
+  ],
+  "competitions": [
+    {
+      "id": "wrccdc-2025",
+      "name": "WRCCDC 2025",
+      "year": "2025",
+      "result": "Participant – Blue Team",
+      "description": "Contributed to service uptime, incident response, network hardening, and inject execution during an active defensive cybersecurity competition."
+    },
+    {
+      "id": "amicode-2023",
+      "name": "Amicode 2023",
+      "year": "2023",
+      "result": "Winner",
+      "description": "Won an inter-university competitive programming competition."
+    }
+  ]
+}
