@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { GitFork, Link2, Mail, ChevronDown, FileDown } from "lucide-react";
+import { GitFork, Link2, Mail, ChevronDown, FileDown, MapPin } from "lucide-react";
 import portfolioData from "@/content/portfolio-data.json";
 
 const BOOT_LINES = [
@@ -132,9 +132,13 @@ export default function Hero() {
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.3 }}
-                  className="mt-1 ml-2 text-terminal-white text-base font-bold"
+                  className="mt-1 ml-2 flex items-center gap-3 flex-wrap"
                 >
-                  {personal.name}
+                  <span className="text-terminal-white text-base font-bold">{personal.name}</span>
+                  <span className="flex items-center gap-1 font-mono text-xs text-terminal-muted">
+                    <MapPin size={11} className="text-terminal-green" />
+                    {personal.location}
+                  </span>
                 </motion.div>
 
                 <motion.div

@@ -55,9 +55,6 @@ export default function Education() {
                     <span className="font-mono text-xs text-terminal-muted">
                       GPA: {edu.gpa}
                     </span>
-                    <span className="font-mono text-xs text-terminal-subtle">
-                      {edu.location}
-                    </span>
                   </div>
                 </div>
               </div>

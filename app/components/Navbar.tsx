@@ -5,7 +5,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Terminal } from "lucide-react";
 
 const NAV_ITEMS = [
-  { label: "--about", href: "#about", short: "about" },
+  { label: "--about", href: "#", short: "about" },
+  { label: "--skills", href: "#about", short: "skills" },
   { label: "--education", href: "#education", short: "education" },
   { label: "--experience", href: "#experience", short: "experience" },
   { label: "--projects", href: "#projects", short: "projects" },

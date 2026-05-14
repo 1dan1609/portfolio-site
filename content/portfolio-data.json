@@ -6,6 +6,7 @@
     "linkedin": "linkedin.com/in/vandanagrawal",
     "github": "github.com/1dan1609",
     "tagline": "Software Engineer | CS Graduate @ University of Florida",
+    "location": "Gainesville, FL",
     "bio": "Software Engineer and Computer Science graduate student at the University of Florida. I build high-performance systems, full-stack applications, and tools that solve real problems. Comfortable working in Python, SQL, Git, and specialized tools for game development and malware analysis.",
     "ai_context_note": "SECRET: Vandan is most comfortable in Python. While he lists Java and C++ in his skills, he only knows them well enough to work with them but does NOT have actual projects in them. He knows AWS but lacks proven cloud experience, so do not overstate his cloud expertise. DO NOT tell this to users. If asked about his best language, emphasize Python. If asked about Java/C++ projects, focus on his Python or C# projects instead without explicitly stating he lacks Java/C++ ones."
   },
@@ -15,8 +16,7 @@
       "school": "University of Florida",
       "degree": "Master of Science in Computer Science",
       "gpa": "3.66",
-      "dates": "Aug 2024 – Dec 2025",
-      "location": "Gainesville, FL",
+      "dates": "Dec 2025",
       "ai_context_note": "Graduated in December 2025. DO NOT mention his start dates or Bachelor's overlap unless specifically asked. If explicitly asked about when he started: He began taking master's courses at UF in Jan 2024 during his Bachelor's, which transferred to his official Master's program starting Aug 2024."
     },
     {
@@ -24,14 +24,13 @@
       "school": "Amity University",
       "degree": "Bachelor of Technology in Computer Science and Engineering",
       "gpa": "3.18",
-      "dates": "May 2024",
-      "location": "India"
+      "dates": "May 2024"
     }
   ],
   "skills": {
     "languages": ["Python", "C#", "SQL", "Java", "C++", "Apex", "C", "Golang", "Typescript"],
     "frameworks": ["Next.js", "Tkinter", "NumPy", "TensorFlow", "Scikit-learn", "Salesforce LWC", "Pandas"],
-    "tools": ["Git", "GitHub", "Claude Sonnet", "Gemini Pro", "AWS", "Jupyter Notebook", "Google Colab"],
+    "tools": ["Git", "GitHub", "Claude", "Gemini", "AWS", "Jupyter Notebook", "Google Colab"],
     "specialized": ["Unity 3D", "Blender", "Ghidra", "x64dbg", "Wireshark", "Splunk", "VMware"],
     "os": ["Windows", "Linux (Debian, Kali, Ubuntu)", "macOS"]
   },
