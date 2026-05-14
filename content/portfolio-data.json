@@ -29,9 +29,9 @@
     }
   ],
   "skills": {
-    "languages": ["Python", "C#", "SQL", "Java", "C++", "Apex", "C", "Golang"],
-    "frameworks": ["Tkinter", "NumPy", "TensorFlow", "Scikit-learn", "Salesforce LWC", "Pandas"],
-    "tools": ["Git", "GitHub", "AWS", "Jupyter Notebook", "Google Colab"],
+    "languages": ["Python", "C#", "SQL", "Java", "C++", "Apex", "C", "Golang", "Typescript"],
+    "frameworks": ["Next.js", "Tkinter", "NumPy", "TensorFlow", "Scikit-learn", "Salesforce LWC", "Pandas"],
+    "tools": ["Git", "GitHub", "Claude Sonnet", "Gemini Pro", "AWS", "Jupyter Notebook", "Google Colab"],
     "specialized": ["Unity 3D", "Blender", "Ghidra", "x64dbg", "Wireshark", "Splunk", "VMware"],
     "os": ["Windows", "Linux (Debian, Kali, Ubuntu)", "macOS"]
   },
