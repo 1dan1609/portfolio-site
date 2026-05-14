@@ -38,7 +38,17 @@ export default function Chat() {
   const [loading, setLoading] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+  const [hasOpened, setHasOpened] = useState(false);
   const chatPanelRef = useRef<HTMLDivElement>(null);
+
+  const handleOpen = () => {
+    setOpen(true);
+  };
+
+  // Set hasOpened whenever chat is opened
+  useEffect(() => {
+    if (open) setHasOpened(true);
+  }, [open]);
 
   // Close chat on click outside
   useEffect(() => {
@@ -132,19 +142,38 @@ export default function Chat() {
   return (
     <>
       {/* FAB button */}
-      <motion.button
-        id="chat-fab"
-        initial={{ scale: 0, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
-        transition={{ delay: 2.5, type: "spring" }}
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.95 }}
-        onClick={() => setOpen(true)}
-        className={`fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full bg-terminal-green text-bg-base flex items-center justify-center shadow-glow-green transition-all ${open ? "hidden" : "flex"}`}
-        aria-label="Open chat"
-      >
-        <MessageSquare size={22} />
-      </motion.button>
+      <div className="fixed bottom-6 right-6 z-50 flex items-center gap-3">
+        <AnimatePresence>
+          {!open && !hasOpened && (
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: 10 }}
+              transition={{ delay: 3, duration: 0.5 }}
+              className="hidden sm:flex items-center gap-2 bg-bg-elevated/80 backdrop-blur-sm border border-terminal-green/30 px-3 py-2 rounded shadow-glow-green"
+            >
+              <div className="w-1.5 h-1.5 rounded-full bg-terminal-green animate-pulse" />
+              <span className="font-mono text-[10px] text-terminal-muted whitespace-nowrap">
+                Try the AI-powered chatbot!
+              </span>
+            </motion.div>
+          )}
+        </AnimatePresence>
+
+        <motion.button
+          id="chat-fab"
+          initial={{ scale: 0, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ delay: 2.5, type: "spring" }}
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.95 }}
+          onClick={handleOpen}
+          className={`w-14 h-14 rounded-full bg-terminal-green text-bg-base flex items-center justify-center shadow-glow-green transition-all ${open ? "hidden" : "flex"}`}
+          aria-label="Open chat"
+        >
+          <MessageSquare size={22} />
+        </motion.button>
+      </div>
 
       {/* Chat panel */}
       <AnimatePresence>

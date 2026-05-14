@@ -27,7 +27,6 @@ export default function Hero() {
   const [phraseIndex, setPhraseIndex] = useState(0);
   const [displayText, setDisplayText] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);
-
   const { personal } = portfolioData;
 
   // Boot sequence
@@ -180,6 +179,17 @@ export default function Hero() {
                   className="mt-1 ml-2 text-terminal-muted text-xs leading-relaxed max-w-2xl"
                 >
                   {personal.bio}
+                </motion.div>
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 2.0 }}
+                  className="mt-6 flex items-center gap-2 text-terminal-muted/60"
+                >
+                  <span className="text-terminal-green text-[10px]">›</span>
+                  <span className="text-[10px] font-mono italic">
+                    Hint: Use the AI chatbot (bottom right) for specific queries.
+                  </span>
                 </motion.div>
               </>
             )}
