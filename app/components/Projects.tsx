@@ -39,7 +39,7 @@ export default function Projects() {
   const { projects } = portfolioData;
 
   return (
-    <section id="projects" ref={ref} className="py-24 px-6 bg-bg-surface/30">
+    <section id="projects" ref={ref} className="py-12 px-6 bg-bg-surface/30">
       <div className="max-w-5xl mx-auto">
         {/* Section header */}
         <motion.div

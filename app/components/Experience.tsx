@@ -15,7 +15,7 @@ export default function Experience() {
   const { experience, competitions } = portfolioData;
 
   return (
-    <section id="experience" ref={ref} className="py-24 px-6">
+    <section id="experience" ref={ref} className="py-12 px-6">
       <div className="max-w-4xl mx-auto">
         {/* Section header */}
         <motion.div
@@ -166,18 +166,16 @@ export default function Experience() {
           <div className="grid sm:grid-cols-2 gap-4">
             {competitions.map((comp) => (
               <div key={comp.id} className="terminal-card p-4">
-                <div className="flex items-start justify-between gap-2">
-                  <div>
-                    <div className="font-semibold text-terminal-white text-sm">
-                      {comp.name}
-                    </div>
-                    <div className="text-terminal-muted text-xs mt-1">
-                      {comp.description}
-                    </div>
+                <div className="flex items-center justify-between gap-2 mb-3">
+                  <div className="font-semibold text-terminal-white text-sm">
+                    {comp.name}
                   </div>
                   <div className="font-mono text-xs text-terminal-yellow border border-terminal-yellow/30 px-2 py-0.5 rounded flex-shrink-0">
                     {comp.result}
                   </div>
+                </div>
+                <div className="text-terminal-muted text-xs">
+                  {comp.description}
                 </div>
               </div>
             ))}

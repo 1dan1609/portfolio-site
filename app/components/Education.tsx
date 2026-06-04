@@ -21,7 +21,7 @@ export default function Education() {
   };
 
   return (
-    <section id="education" ref={ref} className="py-24 px-6">
+    <section id="education" ref={ref} className="py-12 px-6">
       <div className="max-w-4xl mx-auto">
         {/* Section header */}
         <motion.div
