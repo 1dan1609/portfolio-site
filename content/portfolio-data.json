@@ -28,9 +28,9 @@
     }
   ],
   "skills": {
-    "languages": ["Python", "C#", "SQL", "Java", "C++", "Apex", "C", "Golang", "Typescript"],
-    "frameworks": ["Next.js", "Tkinter", "NumPy", "TensorFlow", "Scikit-learn", "Salesforce LWC", "Pandas"],
-    "tools": ["Git", "GitHub", "Claude", "Gemini", "AWS", "Jupyter Notebook", "Google Colab"],
+    "languages": ["Python", "Java", "C++", "C#", "x64 assembly language", "SQL", "Apex", "C", "Golang", "Typescript"],
+    "frameworks": ["Next.js", "FastAPI", "Tkinter", "NumPy", "TensorFlow", "Scikit-learn", "Salesforce LWC", "Pandas"],
+    "tools": ["Git", "GitHub", "Claude", "Gemini", "Google Cloud Platform", "Vertex AI", "AWS", "Jupyter Notebook", "Google Colab"],
     "specialized": ["Unity 3D", "Blender", "Ghidra", "x64dbg", "Wireshark", "Splunk", "VMware"],
     "os": ["Windows", "Linux (Debian, Kali, Ubuntu)", "macOS"]
   },
@@ -70,6 +70,23 @@
     }
   ],
   "projects": [
+    {
+      "id": "civic-ai",
+      "name": "CivicAI",
+      "tagline": "AI-Powered Municipal Research and Analysis Engine",
+      "tech": ["GCP", "Vertex AI", "FastAPI", "Next.js", "Firestore", "Gemini", "Docker"],
+      "status": "completed",
+      "github": "https://github.com/1dan1609/CivicAI",
+      "demo": null,
+      "description": "An AI-powered municipal research and analysis platform leveraging RAG to synthesize massive volumes of local government documents and legislative files for policy researchers.",
+      "bullets": [
+        "Architected a municipal search engine on GCP Cloud Run with Next.js and FastAPI, serving secure search analytics with distributed rate-limiting, OAuth 2.0 protection, and zero-downtime scaling.",
+        "Engineered an automated AI research pipeline with Vertex AI and Gemini that processes 650+ municipal documents, automating daily updates to keep search results fresh and accurate without manual effort.",
+        "Integrated Google OAuth and Cloud Firestore to create a persistent research notebook that lets a user manually bookmark documents and store past searches for easy retrieval, ensuring no important findings are lost.",
+        "Implemented a robust Retrieval-Augmented Generation (RAG) architecture to answer complex municipal policy questions with verified insights backed by direct citations."
+      ],
+      "files": []
+    },
     {
       "id": "portfolio-site",
       "name": "Personal Portfolio Website",
