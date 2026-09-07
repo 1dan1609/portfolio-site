@@ -4,8 +4,6 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { FileDown, ArrowRight, BrainCircuit, Layers, ShieldAlert, Check } from "lucide-react";
 import portfolioData from "@/content/portfolio-data.json";
-import HeatDelta from "./HeatDelta";
-import HeatBar from "./HeatBar";
 
 // Real, sourced numbers pulled from across the portfolio — never a single
 // project mislabeled as general "impact."
