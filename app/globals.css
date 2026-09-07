@@ -1,20 +1,17 @@
-@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Inter:wght@300;400;500;600;700&display=swap");
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 /* ─── Base Reset ─────────────────────────────────────────── */
 :root {
-  --color-bg: #0d1117;
-  --color-surface: #161b22;
-  --color-elevated: #1c2128;
-  --color-border: #30363d;
-  --color-green: #00ff41;
-  --color-green-dim: #39d353;
-  --color-blue: #58a6ff;
-  --color-white: #e6edf3;
-  --color-muted: #8b949e;
+  --color-board-black: #0b0b0d;
+  --color-board-panel: #1a1917;
+  --color-board-line: #2a2d31;
+  --color-orange: #ff5a11;
+  --color-heat: #fff3c4;
+  --color-cherry: #c21e0e;
+  --color-ink-display: #fffdf7;
+  --color-ink-body: #ede9e2;
   scroll-behavior: smooth;
 }
 
@@ -28,184 +25,103 @@ html,
 body {
   max-width: 100vw;
   overflow-x: hidden;
-  background-color: var(--color-bg);
-  color: var(--color-white);
-  font-family: "Inter", system-ui, sans-serif;
+  background-color: var(--color-board-black);
+  color: var(--color-ink-body);
+  font-family: var(--font-archivo), system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
 }
 
-/* ─── Scrollbar ─────────────────────────────────────────── */
+/* ─── Browser surfaces theming ───────────────────────────── */
 ::-webkit-scrollbar {
-  width: 6px;
+  width: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: var(--color-bg);
+  background: var(--color-board-black);
 }
 ::-webkit-scrollbar-thumb {
-  background: #30363d;
-  border-radius: 3px;
+  background: var(--color-board-line);
+  border-radius: 0;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--color-green);
+  background: var(--color-orange);
 }
 
-/* ─── Selection ──────────────────────────────────────────── */
 ::selection {
-  background: rgba(0, 255, 65, 0.25);
-  color: var(--color-white);
+  background: rgba(255, 90, 17, 0.35);
+  color: var(--color-ink-display);
+}
+::-moz-selection {
+  background: rgba(255, 90, 17, 0.35);
+  color: var(--color-ink-display);
 }
 
-/* ─── Terminal Grid Background ───────────────────────────── */
-.bg-terminal-grid {
-  background-color: var(--color-bg);
-  background-image: linear-gradient(
-      rgba(0, 255, 65, 0.03) 1px,
-      transparent 1px
-    ),
-    linear-gradient(90deg, rgba(0, 255, 65, 0.03) 1px, transparent 1px);
-  background-size: 40px 40px;
+:focus-visible {
+  outline: 2px solid var(--color-orange);
+  outline-offset: 2px;
 }
 
-/* ─── Scanline Overlay ───────────────────────────────────── */
-.scanlines::before {
-  content: "";
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: repeating-linear-gradient(
-    to bottom,
-    transparent 0px,
-    transparent 2px,
-    rgba(0, 0, 0, 0.08) 2px,
-    rgba(0, 0, 0, 0.08) 4px
-  );
-  pointer-events: none;
-  z-index: 9999;
+.font-mono,
+.instrument-figure {
+  font-variant-numeric: tabular-nums;
 }
 
-/* ─── Glow Effects ───────────────────────────────────────── */
-.glow-green {
-  text-shadow: 0 0 8px rgba(0, 255, 65, 0.6), 0 0 20px rgba(0, 255, 65, 0.3);
-}
-.glow-blue {
-  text-shadow: 0 0 8px rgba(88, 166, 255, 0.6),
-    0 0 20px rgba(88, 166, 255, 0.3);
-}
-
-/* ─── Terminal Card ──────────────────────────────────────── */
-.terminal-card {
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
-  border-radius: 8px;
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
-}
-.terminal-card:hover {
-  border-color: rgba(0, 255, 65, 0.4);
-  box-shadow: 0 0 20px rgba(0, 255, 65, 0.1);
+/* ─── Ground: true black with a whisper of grain ─────────── */
+.bg-forge {
+  background-color: var(--color-board-black);
+  background-image:
+    radial-gradient(ellipse 1000px 500px at 15% -10%, rgba(255, 90, 17, 0.05), transparent 60%),
+    repeating-linear-gradient(115deg, rgba(255, 255, 255, 0.012) 0px, rgba(255, 255, 255, 0.012) 1px, transparent 1px, transparent 3px);
 }
 
-/* ─── Window chrome (fake terminal header) ───────────────── */
-.terminal-window {
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
-  border-radius: 10px;
-  overflow: hidden;
-}
-.terminal-titlebar {
-  background: var(--color-elevated);
-  border-bottom: 1px solid var(--color-border);
-  padding: 10px 16px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-.terminal-dot {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
+/* ─── Distressed stencil display text ────────────────────── */
+.stencil-display {
+  font-family: var(--font-stencil), sans-serif;
+  /* This is a variable stencil font with only 600/700/800/900 static
+     instances generated (next/font config); the default inherited weight
+     (400) has no matching instance and corrupts glyph rendering instead of
+     cleanly falling back. Always request a weight that was actually loaded. */
+  font-weight: 700;
+  color: var(--color-ink-display);
+  letter-spacing: 0.01em;
+  line-height: 0.92;
+  text-shadow: 0 2px 0 rgba(0, 0, 0, 0.5);
 }
 
-/* ─── Blinking cursor ────────────────────────────────────── */
-.cursor-blink {
-  display: inline-block;
-  width: 10px;
-  height: 1.2em;
-  background: var(--color-green);
-  margin-left: 2px;
-  vertical-align: text-bottom;
-  animation: blink 1s step-end infinite;
-}
-
-@keyframes blink {
-  0%,
-  100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0;
-  }
-}
-
-/* ─── Git log line ───────────────────────────────────────── */
-.git-line {
+/* ─── Live pulse dot ──────────────────────────────────────── */
+.pulse-dot {
   position: relative;
-  padding-left: 2rem;
+  width: 7px;
+  height: 7px;
+  border-radius: 999px;
+  background: var(--color-orange);
 }
-.git-line::before {
+.pulse-dot::after {
   content: "";
   position: absolute;
-  left: 7px;
-  top: 20px;
-  bottom: -20px;
-  width: 2px;
-  background: linear-gradient(
-    to bottom,
-    var(--color-green-dim),
-    transparent
-  );
-}
-.git-line:last-child::before {
-  display: none;
+  inset: -4px;
+  border-radius: 999px;
+  border: 1px solid var(--color-orange);
+  animation: pulseLive 1.6s ease-in-out infinite;
 }
 
-/* ─── Chat ───────────────────────────────────────────────── */
-.chat-scroll {
-  scrollbar-width: thin;
-  scrollbar-color: #30363d transparent;
+/* ─── Heat gradient bar (real deltas only) ───────────────── */
+.heat-fill {
+  background: linear-gradient(90deg, var(--color-cherry) 0%, var(--color-orange) 55%, var(--color-heat) 100%);
 }
 
-/* ─── Prose overrides for react-markdown ────────────────── */
-.chat-message-content p {
-  margin-bottom: 0.5rem;
-}
-.chat-message-content code {
-  background: rgba(0, 255, 65, 0.08);
-  border: 1px solid rgba(0, 255, 65, 0.2);
-  border-radius: 3px;
-  padding: 0 4px;
-  font-family: "JetBrains Mono", monospace;
-  font-size: 0.85em;
-  color: var(--color-green);
-}
-.chat-message-content ul {
-  padding-left: 1.2rem;
-  list-style-type: disc;
-}
-.chat-message-content li {
-  margin-bottom: 0.25rem;
+/* ─── Panels ──────────────────────────────────────────────── */
+.forge-panel {
+  background: var(--color-board-panel);
+  border: 1px solid var(--color-board-line);
 }
 
-/* ─── Utility ────────────────────────────────────────────── */
-.font-mono {
-  font-family: "JetBrains Mono", monospace;
-}
+/* ─── Section label ───────────────────────────────────────── */
 .section-heading {
-  font-family: "JetBrains Mono", monospace;
-  color: var(--color-green);
-  font-size: 0.8rem;
-  letter-spacing: 0.15em;
+  font-family: var(--font-archivo), sans-serif;
+  color: var(--color-orange);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
   display: flex;
   align-items: center;
@@ -215,5 +131,44 @@ body {
   content: "";
   flex: 1;
   height: 1px;
-  background: linear-gradient(to right, var(--color-border), transparent);
+  background: linear-gradient(to right, var(--color-board-line), transparent);
+}
+
+/* ─── Chat ────────────────────────────────────────────────── */
+.chat-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-board-line) transparent;
+}
+.chat-message-content p {
+  margin-bottom: 0.5rem;
+}
+.chat-message-content code {
+  background: rgba(255, 90, 17, 0.12);
+  border: 1px solid rgba(255, 90, 17, 0.3);
+  border-radius: 2px;
+  padding: 0 4px;
+  font-family: var(--font-jetbrains-mono), monospace;
+  font-size: 0.85em;
+  color: var(--color-orange);
+}
+.chat-message-content ul {
+  padding-left: 1.2rem;
+  list-style-type: disc;
+}
+.chat-message-content li {
+  margin-bottom: 0.25rem;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+.cursor-blink {
+  display: inline-block;
+  width: 8px;
+  height: 1.1em;
+  background: var(--color-orange);
+  margin-left: 2px;
+  vertical-align: text-bottom;
+  animation: blink 1s step-end infinite;
 }

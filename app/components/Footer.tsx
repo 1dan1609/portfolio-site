@@ -2,7 +2,7 @@
 
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import { Mail, Link2, Terminal } from "lucide-react";
+import { Mail, Link2, Send } from "lucide-react";
 import portfolioData from "@/content/portfolio-data.json";
 
 export default function Footer() {
@@ -10,40 +10,38 @@ export default function Footer() {
   const inView = useInView(ref, { once: true, margin: "-50px" });
   const { personal } = portfolioData;
 
+  const openAssistant = () => {
+    window.dispatchEvent(new Event("open-assistant"));
+  };
+
   return (
-    <footer
-      id="contact"
-      ref={ref}
-      className="py-20 px-6 border-t border-bg-border bg-bg-surface/20"
-    >
-      <div className="max-w-4xl mx-auto">
+    <footer id="contact" ref={ref} className="py-20 px-6 md:pl-28 border-t border-board-line">
+      <div className="max-w-6xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5 }}
           className="text-center"
         >
-          {/* Terminal prompt */}
-          <div className="font-mono text-xs text-terminal-muted mb-8 flex items-center justify-center gap-2">
-            <span className="text-terminal-green">$</span>
-            <span>./contact.sh --open-to-work</span>
-            <span className="cursor-blink" />
+          <div className="section-heading mb-8 justify-center">Deploy</div>
+
+          <div className="inline-flex items-center justify-center w-16 h-16 rounded-sm forge-panel mb-5">
+            <Send size={24} className="text-accent-orange" strokeWidth={1.75} />
           </div>
 
-          <h2 className="text-3xl font-bold text-terminal-white mb-3">
-            Let&apos;s Build Something
+          <h2 className="stencil-display text-3xl uppercase mb-3">
+            Ready to ship.
           </h2>
-          <p className="text-terminal-muted text-sm max-w-md mx-auto mb-10">
-            Open to new opportunities in Software Engineering and Development.
-            Reach out via email or connect on LinkedIn.
+          <p className="text-ink-muted text-sm max-w-md mx-auto mb-10">
+            Quietly open to the right next opportunity. Reach out directly, or
+            query the assistant for anything not on this page.
           </p>
 
-          {/* Contact links */}
-          <div className="flex items-center justify-center gap-4 flex-wrap">
+          <div className="flex items-center justify-center gap-3 flex-wrap">
             <a
               id="footer-email"
               href={`mailto:${personal.email}`}
-              className="flex items-center gap-2 font-mono text-sm px-5 py-2.5 rounded border border-terminal-green text-terminal-green hover:bg-terminal-green hover:text-bg-base transition-all duration-200 shadow-glow-green"
+              className="flex items-center gap-2 bg-accent-orange text-board-black font-sans font-bold text-sm px-5 py-2.5 rounded-sm hover:bg-accent-heat transition-colors"
             >
               <Mail size={15} />
               {personal.email}
@@ -53,19 +51,25 @@ export default function Footer() {
               href={`https://${personal.linkedin}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 font-mono text-sm px-5 py-2.5 rounded border border-terminal-blue text-terminal-blue hover:bg-terminal-blue hover:text-bg-base transition-all duration-200"
+              className="flex items-center gap-2 font-sans text-sm px-5 py-2.5 rounded-sm border border-board-line text-ink-body hover:border-accent-orange hover:text-accent-orange transition-colors"
             >
               <Link2 size={15} />
               LinkedIn
             </a>
+            <button
+              id="footer-assistant"
+              onClick={openAssistant}
+              className="flex items-center gap-2 font-sans text-sm px-5 py-2.5 rounded-sm border border-board-line text-ink-body hover:border-accent-orange hover:text-accent-orange transition-colors"
+            >
+              <Send size={15} />
+              Query Assistant
+            </button>
           </div>
 
-          {/* Bottom bar */}
-          <div className="mt-16 pt-8 border-t border-bg-border flex items-center justify-center gap-2 text-terminal-subtle font-mono text-xs">
-            <Terminal size={12} />
+          <div className="mt-16 pt-8 border-t border-board-line flex items-center justify-center gap-2 text-ink-subtle font-mono text-xs">
             <span>vandan.dev</span>
             <span className="mx-2">·</span>
-            <span>Built with Next.js 14 + Gemini AI</span>
+            <span>built under load</span>
             <span className="mx-2">·</span>
             <span>{new Date().getFullYear()}</span>
           </div>

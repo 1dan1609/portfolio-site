@@ -4,10 +4,13 @@ import { useState, useEffect, useRef, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import ReactMarkdown from "react-markdown";
 import {
-  MessageSquare,
+  Terminal,
   Send,
   Bot,
   User,
+  X,
+  Maximize2,
+  Minimize2,
 } from "lucide-react";
 
 /* ────────────────────────────────────────────────────
@@ -24,11 +27,11 @@ const SUGGESTIONS = [
   "What projects has Vandan built?",
   "Tell me about his cybersecurity experience",
   "What programming languages does he know?",
-  "What is GatorGlide?",
+  "What is CivicAI?",
 ];
 
 /* ────────────────────────────────────────────────────
-   Component
+   Component — the assistant, queried from anywhere
 ──────────────────────────────────────────────────── */
 export default function Chat() {
   const [open, setOpen] = useState(false);
@@ -41,16 +44,18 @@ export default function Chat() {
   const [hasOpened, setHasOpened] = useState(false);
   const chatPanelRef = useRef<HTMLDivElement>(null);
 
-  const handleOpen = () => {
-    setOpen(true);
-  };
+  const handleOpen = () => setOpen(true);
 
-  // Set hasOpened whenever chat is opened
+  useEffect(() => {
+    const listener = () => setOpen(true);
+    window.addEventListener("open-assistant", listener);
+    return () => window.removeEventListener("open-assistant", listener);
+  }, []);
+
   useEffect(() => {
     if (open) setHasOpened(true);
   }, [open]);
 
-  // Close chat on click outside
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (
@@ -67,12 +72,10 @@ export default function Chat() {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [open]);
 
-  // Scroll to bottom on new messages
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages, loading]);
 
-  // Focus input when opened
   useEffect(() => {
     if (open) setTimeout(() => inputRef.current?.focus(), 300);
   }, [open]);
@@ -81,8 +84,6 @@ export default function Chat() {
     async (text: string) => {
       const trimmed = text.trim();
       if (!trimmed || loading) return;
-
-
 
       const userMsg: Message = {
         id: Date.now().toString(),
@@ -122,7 +123,7 @@ export default function Chat() {
         const aiMsg: Message = {
           id: (Date.now() + 1).toString(),
           role: "assistant",
-          content: `⚠️ ${err instanceof Error ? err.message : "Unknown error. Please try again."}`,
+          content: `⚠ ${err instanceof Error ? err.message : "Unknown error. Please try again."}`,
           timestamp: new Date(),
         };
         setMessages((prev) => [...prev, aiMsg]);
@@ -141,7 +142,7 @@ export default function Chat() {
 
   return (
     <>
-      {/* FAB button */}
+      {/* FAB */}
       <div className="fixed bottom-6 right-6 z-50 flex items-center gap-3">
         <AnimatePresence>
           {!open && !hasOpened && (
@@ -150,11 +151,11 @@ export default function Chat() {
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: 10 }}
               transition={{ delay: 3, duration: 0.5 }}
-              className="hidden sm:flex items-center gap-2 bg-bg-elevated/80 backdrop-blur-sm border border-terminal-green/30 px-3 py-2 rounded shadow-glow-green"
+              className="hidden sm:flex items-center gap-2 forge-panel px-3 py-2 rounded-sm"
             >
-              <div className="w-1.5 h-1.5 rounded-full bg-terminal-green animate-pulse" />
-              <span className="font-mono text-[10px] text-terminal-muted whitespace-nowrap">
-                Try the AI-powered chatbot!
+              <span className="pulse-dot" />
+              <span className="font-mono text-[10px] text-ink-muted whitespace-nowrap">
+                Query the AI assistant
               </span>
             </motion.div>
           )}
@@ -165,13 +166,13 @@ export default function Chat() {
           initial={{ scale: 0, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ delay: 2.5, type: "spring" }}
-          whileHover={{ scale: 1.1 }}
+          whileHover={{ scale: 1.08 }}
           whileTap={{ scale: 0.95 }}
           onClick={handleOpen}
-          className={`w-14 h-14 rounded-full bg-terminal-green text-bg-base flex items-center justify-center shadow-glow-green transition-all ${open ? "hidden" : "flex"}`}
-          aria-label="Open chat"
+          className={`w-14 h-14 rounded-full bg-accent-orange text-board-black flex items-center justify-center shadow-orange-glow transition-all ${open ? "hidden" : "flex"}`}
+          aria-label="Open the AI assistant"
         >
-          <MessageSquare size={22} />
+          <Terminal size={22} />
         </motion.button>
       </div>
 
@@ -185,52 +186,45 @@ export default function Chat() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: "100%" }}
             transition={{ type: "spring", damping: 25, stiffness: 200 }}
-            className={`fixed bottom-6 right-6 z-50 flex flex-col terminal-window shadow-glow-green transition-all duration-300 ${
+            className={`fixed bottom-6 right-6 z-50 flex flex-col forge-panel rounded-sm shadow-orange-glow transition-all duration-300 ${
               isMaximized
                 ? "w-[800px] max-w-[calc(100vw-2rem)] h-[80vh] max-h-[calc(100vh-2rem)]"
                 : "w-[360px] max-w-[calc(100vw-2rem)] h-[520px] max-h-[calc(100vh-6rem)]"
             }`}
           >
-            {/* Title bar */}
-            <div className="terminal-titlebar flex-shrink-0">
-              <button
-                onClick={() => setOpen(false)}
-                className="terminal-dot bg-[#FF5F57] hover:opacity-80 transition-opacity border-none p-0 cursor-pointer"
-                aria-label="Close chat"
-              />
-              <button
-                onClick={() => setOpen(false)}
-                className="terminal-dot bg-[#FEBC2E] hover:opacity-80 transition-opacity border-none p-0 cursor-pointer"
-                aria-label="Minimize chat"
-              />
+            {/* Header */}
+            <div className="flex-shrink-0 flex items-center gap-2 px-3 py-2.5 border-b border-board-line">
+              <Terminal size={13} className="text-accent-orange" />
+              <span className="font-sans text-[11px] text-ink-muted uppercase tracking-widest flex-1">
+                System Query — Ask Vandan
+              </span>
               <button
                 onClick={() => setIsMaximized(!isMaximized)}
-                className="terminal-dot bg-[#28C840] hover:opacity-80 transition-opacity border-none p-0 cursor-pointer"
+                className="text-ink-subtle hover:text-accent-orange transition-colors p-1"
                 aria-label={isMaximized ? "Restore chat" : "Maximize chat"}
-              />
-              <div className="flex items-center gap-2 ml-3 flex-1">
-                <Bot size={13} className="text-terminal-green" />
-                <span className="font-mono text-xs text-terminal-muted">
-                  ask-vandan.sh
-                </span>
-              </div>
+              >
+                {isMaximized ? <Minimize2 size={13} /> : <Maximize2 size={13} />}
+              </button>
+              <button
+                onClick={() => setOpen(false)}
+                className="text-ink-subtle hover:text-accent-orange transition-colors p-1"
+                aria-label="Close chat"
+              >
+                <X size={14} />
+              </button>
             </div>
 
             {/* Messages area */}
             <div className="flex-1 overflow-y-auto p-4 space-y-3 chat-scroll">
-              {/* Welcome message */}
               {messages.length === 0 && (
-                <motion.div
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                >
+                <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }}>
                   <div className="flex gap-2 mb-4">
-                    <div className="w-6 h-6 rounded-full bg-terminal-green/20 border border-terminal-green/40 flex items-center justify-center flex-shrink-0">
-                      <Bot size={12} className="text-terminal-green" />
+                    <div className="w-6 h-6 rounded-full bg-accent-orange/15 border border-accent-orange/40 flex items-center justify-center flex-shrink-0">
+                      <Bot size={12} className="text-accent-orange" />
                     </div>
-                    <div className="bg-bg-elevated border border-bg-border rounded-lg rounded-tl-none p-3 text-sm text-terminal-white/90 max-w-[85%]">
-                      <p className="font-mono text-xs text-terminal-green mb-1">
-                        $ ./ask-vandan.sh --init
+                    <div className="bg-board-black border border-board-line rounded-sm rounded-tl-none p-3 text-sm text-ink-body/90 max-w-[85%]">
+                      <p className="font-mono text-xs text-accent-orange mb-1">
+                        query accepted.
                       </p>
                       <p>
                         Hi! I&apos;m Vandan&apos;s AI assistant. Ask me anything about his
@@ -239,18 +233,17 @@ export default function Chat() {
                     </div>
                   </div>
 
-                  {/* Suggestions */}
                   <div className="space-y-1.5">
-                    <p className="font-mono text-xs text-terminal-subtle mb-2">
+                    <p className="font-mono text-xs text-ink-subtle mb-2">
                       suggested queries:
                     </p>
                     {SUGGESTIONS.map((s) => (
                       <button
                         key={s}
                         onClick={() => sendMessage(s)}
-                        className="w-full text-left font-mono text-xs px-3 py-2 rounded border border-bg-border text-terminal-muted hover:border-terminal-green/40 hover:text-terminal-green hover:bg-terminal-green/5 transition-all"
+                        className="w-full text-left font-mono text-xs px-3 py-2 rounded-sm border border-board-line text-ink-muted hover:border-accent-orange/40 hover:text-accent-orange hover:bg-accent-orange/5 transition-all"
                       >
-                        <span className="text-terminal-green mr-2">›</span>
+                        <span className="text-accent-orange mr-2">›</span>
                         {s}
                       </button>
                     ))}
@@ -258,7 +251,6 @@ export default function Chat() {
                 </motion.div>
               )}
 
-              {/* Message list */}
               {messages.map((msg) => (
                 <motion.div
                   key={msg.id}
@@ -269,27 +261,27 @@ export default function Chat() {
                   <div
                     className={`w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 ${
                       msg.role === "user"
-                        ? "bg-terminal-blue/20 border border-terminal-blue/40"
-                        : "bg-terminal-green/20 border border-terminal-green/40"
+                        ? "bg-board-black border border-board-line"
+                        : "bg-accent-orange/15 border border-accent-orange/40"
                     }`}
                   >
                     {msg.role === "user" ? (
-                      <User size={12} className="text-terminal-blue" />
+                      <User size={12} className="text-ink-muted" />
                     ) : (
-                      <Bot size={12} className="text-terminal-green" />
+                      <Bot size={12} className="text-accent-orange" />
                     )}
                   </div>
                   <div
-                    className={`max-w-[85%] rounded-lg p-3 text-sm ${
+                    className={`max-w-[85%] min-w-0 break-words rounded-sm p-3 text-sm ${
                       msg.role === "user"
-                        ? "bg-terminal-blue/10 border border-terminal-blue/30 text-terminal-white rounded-tr-none"
-                        : "bg-bg-elevated border border-bg-border text-terminal-white/90 rounded-tl-none"
+                        ? "bg-board-black border border-board-line text-ink-body rounded-tr-none"
+                        : "bg-board-black border border-accent-orange/20 text-ink-body/90 rounded-tl-none"
                     }`}
                   >
                     <div className="chat-message-content">
                       <ReactMarkdown>{msg.content}</ReactMarkdown>
                     </div>
-                    <div className="font-mono text-xs text-terminal-subtle mt-1.5">
+                    <div className="font-mono text-xs text-ink-subtle mt-1.5">
                       {msg.timestamp.toLocaleTimeString([], {
                         hour: "2-digit",
                         minute: "2-digit",
@@ -299,28 +291,19 @@ export default function Chat() {
                 </motion.div>
               ))}
 
-              {/* Loading indicator */}
               {loading && (
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  className="flex gap-2"
-                >
-                  <div className="w-6 h-6 rounded-full bg-terminal-green/20 border border-terminal-green/40 flex items-center justify-center flex-shrink-0">
-                    <Bot size={12} className="text-terminal-green" />
+                <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="flex gap-2">
+                  <div className="w-6 h-6 rounded-full bg-accent-orange/15 border border-accent-orange/40 flex items-center justify-center flex-shrink-0">
+                    <Bot size={12} className="text-accent-orange" />
                   </div>
-                  <div className="bg-bg-elevated border border-bg-border rounded-lg rounded-tl-none p-3">
+                  <div className="bg-board-black border border-board-line rounded-sm rounded-tl-none p-3">
                     <div className="flex gap-1">
                       {[0, 1, 2].map((i) => (
                         <motion.div
                           key={i}
                           animate={{ opacity: [0.3, 1, 0.3] }}
-                          transition={{
-                            repeat: Infinity,
-                            duration: 1.2,
-                            delay: i * 0.2,
-                          }}
-                          className="w-1.5 h-1.5 rounded-full bg-terminal-green"
+                          transition={{ repeat: Infinity, duration: 1.2, delay: i * 0.2 }}
+                          className="w-1.5 h-1.5 rounded-full bg-accent-orange"
                         />
                       ))}
                     </div>
@@ -331,16 +314,12 @@ export default function Chat() {
               <div ref={messagesEndRef} />
             </div>
 
-
-
             {/* Input area */}
             <form
               onSubmit={handleSubmit}
-              className="flex-shrink-0 border-t border-bg-border p-3 flex items-center gap-2"
+              className="flex-shrink-0 border-t border-board-line p-3 flex items-center gap-2"
             >
-              <span className="font-mono text-terminal-green text-sm flex-shrink-0">
-                $
-              </span>
+              <Terminal size={13} className="text-accent-orange flex-shrink-0" />
               <input
                 id="chat-input"
                 ref={inputRef}
@@ -350,14 +329,14 @@ export default function Chat() {
                 placeholder="ask me anything..."
                 maxLength={500}
                 disabled={loading}
-                className="flex-1 bg-transparent font-mono text-sm text-terminal-white placeholder-terminal-subtle outline-none disabled:opacity-40"
+                className="flex-1 bg-transparent font-mono text-sm text-ink-body placeholder-ink-subtle outline-none disabled:opacity-40"
                 autoComplete="off"
               />
               <button
                 id="chat-send"
                 type="submit"
                 disabled={!input.trim() || loading}
-                className="text-terminal-green disabled:text-terminal-subtle transition-colors hover:text-terminal-green-dim"
+                className="text-accent-orange disabled:text-ink-subtle transition-colors hover:text-accent-heat"
                 aria-label="Send message"
               >
                 <Send size={15} />

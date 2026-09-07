@@ -7,7 +7,8 @@
     "github": "github.com/1dan1609",
     "tagline": "Software Engineer | CS Graduate @ University of Florida",
     "location": "Gainesville, FL",
-    "bio": "Software Engineer and Computer Science graduate student at the University of Florida. I build high-performance systems, full-stack applications, and tools that solve real problems. Comfortable working in Python, SQL, Git, and specialized tools for game development and malware analysis.",
+    "photo": "/media/personal/headshot.jpeg",
+    "bio": "Software Engineer and Computer Science graduate from the University of Florida, with production experience across full-stack development, RAG/LLM systems, and security research. I build and ship end-to-end — from AI-powered platforms scaling to thousands of users, to reverse-engineering real-world malware. Comfortable working in Python, TypeScript, SQL, Git, and specialized tools for cloud, mobile, and security engineering.",
     "ai_context_note": "SECRET: Vandan is most comfortable in Python. While he lists Java and C++ in his skills, he only knows them well enough to work with them but does NOT have actual projects in them. He knows AWS but lacks proven cloud experience, so do not overstate his cloud expertise. DO NOT tell this to users. If asked about his best language, emphasize Python. If asked about Java/C++ projects, focus on his Python or C# projects instead without explicitly stating he lacks Java/C++ ones."
   },
   "education": [
@@ -23,33 +24,76 @@
       "id": "amity-btech",
       "school": "Amity University",
       "degree": "Bachelor of Technology in Computer Science and Engineering",
-      "gpa": "3.18",
       "dates": "May 2024"
     }
   ],
   "skills": {
-    "languages": ["Python", "Java", "C++", "C#", "x64 assembly language", "SQL", "Apex", "C", "Golang", "Typescript"],
-    "frameworks": ["Next.js", "FastAPI", "Tkinter", "NumPy", "TensorFlow", "Scikit-learn", "Salesforce LWC", "Pandas"],
+    "languages": ["Python", "Java", "C++", "C#", "Kotlin", "x64 assembly language", "SQL", "Apex", "C", "Golang", "Typescript"],
+    "frameworks": ["Next.js", "FastAPI", "Flutter", "Firebase", "Groq Cloud", "Tkinter", "NumPy", "TensorFlow", "Scikit-learn", "Salesforce LWC", "Pandas"],
     "tools": ["Git", "GitHub", "Claude", "Gemini", "Google Cloud Platform", "Vertex AI", "AWS", "Jupyter Notebook", "Google Colab"],
     "specialized": ["Unity 3D", "Blender", "Ghidra", "x64dbg", "Wireshark", "Splunk", "VMware"],
     "os": ["Windows", "Linux (Debian, Kali, Ubuntu)", "macOS"]
   },
   "experience": [
     {
+      "id": "swe-skedaddle-2026",
+      "role": "Software Engineer",
+      "company": "Skedaddle Enterprises",
+      "dates": "March 2026 – Present",
+      "type": "full-time",
+      "commitHash": "e91a4c7",
+      "branch": "feat/member-platform",
+      "tags": ["RAG/LLM", "Groq API", "Kotlin", "Flutter", "Firestore", "Android"],
+      "metrics": [
+        { "label": "Users scaled", "value": 5000, "max": 6000, "unit": "+" },
+        { "label": "Concurrent sessions", "value": 10000, "max": 12000, "unit": "+" }
+      ],
+      "bullets": [
+        "Scaled to 5,000+ users by engineering a RAG-based AI system with Llama 3.3 and the Groq API to process Firestore interest vectors, generating personalized member Context-Cards and activity suggestions.",
+        "Migrated the Swift/Flutter app to native Kotlin, unifying the Android stack and accelerating deployment cycles.",
+        "Integrated Ticketmaster and Google Places APIs for location-aware, proximity-based event discovery.",
+        "Built a real-time RSVP/notification system with NoSQL Firestore listeners, supporting 10,000+ concurrent users.",
+        "Aligned API contracts across Android and Core infrastructure teams to maintain cross-platform logic parity."
+      ]
+    },
+    {
       "id": "cybersec-intern-2025",
-      "role": "Cybersecurity Analyst Intern",
+      "role": "Cybersecurity Analyst",
       "company": "Malware Reverse Engineering Lab",
       "dates": "January 2025 – May 2025",
       "type": "internship",
       "commitHash": "a3f9c12",
       "branch": "feat/malware-analysis",
       "tags": ["Cybersecurity", "Ghidra", "x64dbg", "Wireshark", "YARA", "Reverse Engineering"],
+      "metrics": [
+        { "label": "Malware samples RE'd", "value": 10, "max": 15, "unit": "+" },
+        { "label": "Analysis hours logged", "value": 60, "max": 80, "unit": "+" }
+      ],
       "bullets": [
         "Reverse-engineered 10+ real-world malware samples, analyzing direct system calls in x64 assembly to identify execution flow, persistence mechanisms, C2 channels, and IOCs for rapid incident response.",
         "Performed 60+ hours of static and dynamic analysis using Ghidra, Wireshark, and x64dbg on a multi-system sandbox to extract execution paths and network indicators.",
         "Delivered 4 technical reports highlighting obfuscation techniques and behavioral signatures to assist incident response teams in threat detection and mitigation.",
+        "Reduced manual reverse-engineering time by 90% by automating obfuscation-bypass with Python scripts.",
         "Dissected a variant of the Akira ransomware as a final project, documenting behavior and IOCs — Akira has impacted over 250 small-to-medium American organizations since March 2023.",
         "Authored YARA rules for 5+ malware families by documenting behavioral and threat-actor signatures, improving endpoint security to detect payload variants."
+      ],
+      "reports": [
+        {
+          "label": "Practical I — Fileless Malware (RAT)",
+          "src": "/media/experience/mre/practical-1-fileless-malware.pdf"
+        },
+        {
+          "label": "Practical II — Info & Password Stealer",
+          "src": "/media/experience/mre/practical-2-info-stealer.pdf"
+        },
+        {
+          "label": "Practical III — DarkSide Ransomware",
+          "src": "/media/experience/mre/practical-3-darkside-ransomware.pdf"
+        },
+        {
+          "label": "Practical IV — Akira Ransomware",
+          "src": "/media/experience/mre/practical-4-akira-ransomware.pdf"
+        }
       ]
     },
     {
@@ -61,6 +105,10 @@
       "commitHash": "7b2e841",
       "branch": "feat/salesforce-platform",
       "tags": ["Salesforce", "Apex", "LWC", "REST API", "Cloud"],
+      "metrics": [
+        { "label": "Salesforce objects deployed", "value": 20, "max": 25, "unit": "+" },
+        { "label": "Weekly transactions", "value": 500, "max": 600, "unit": "+" }
+      ],
       "bullets": [
         "Customized and deployed 20+ Salesforce objects, workflows, and permission models to enforce secure, role-based access control and streamline business operations.",
         "Engineered asynchronous Apex triggers and batch processes to handle high-concurrency data without exceeding multi-tenant governor limits, improving system responsiveness by 15%.",
@@ -73,29 +121,111 @@
     {
       "id": "civic-ai",
       "name": "CivicAI",
-      "tagline": "AI-Powered Municipal Research and Analysis Engine",
-      "tech": ["GCP", "Vertex AI", "FastAPI", "Next.js", "Firestore", "Gemini", "Docker"],
+      "tagline": "Municipal Research & Analysis Engine",
+      "tech": ["GCP", "Claude Code", "TypeScript", "Python", "Vertex AI", "FastAPI", "Next.js", "Firestore", "Gemini 2.5", "Docker"],
       "status": "completed",
       "github": "https://github.com/1dan1609/CivicAI",
       "demo": null,
       "description": "An AI-powered municipal research and analysis platform leveraging RAG to synthesize massive volumes of local government documents and legislative files for policy researchers.",
       "bullets": [
-        "Architected a municipal search engine on GCP Cloud Run with Next.js and FastAPI, serving secure search analytics with distributed rate-limiting, OAuth 2.0 protection, and zero-downtime scaling.",
-        "Engineered an automated AI research pipeline with Vertex AI and Gemini that processes 650+ municipal documents, automating daily updates to keep search results fresh and accurate without manual effort.",
-        "Integrated Google OAuth and Cloud Firestore to create a persistent research notebook that lets a user manually bookmark documents and store past searches for easy retrieval, ensuring no important findings are lost.",
+        "Architected a multilingual LLM search engine on GCP with Next.js and FastAPI, adding OAuth 2.0 protection and distributed rate-limiting.",
+        "Developed a RAG pipeline with Vertex AI Search and Gemini 2.5, automating daily incremental ingestion from New York City legislative APIs to keep 8,000+ municipal documents synchronized and searchable.",
+        "Added Google OAuth and a Firestore-backed notebook for persistent bookmarking and search history.",
         "Implemented a robust Retrieval-Augmented Generation (RAG) architecture to answer complex municipal policy questions with verified insights backed by direct citations."
+      ],
+      "media": {
+        "video": { "kind": "embed", "provider": "youtube", "embedId": "nurA779ai94" }
+      },
+      "files": []
+    },
+    {
+      "id": "clinical-trial-dashboard",
+      "name": "Clinical Trial Immune Cell Analytics Dashboard",
+      "tagline": "Clinical Trial Data Analytics & Statistical Pipeline",
+      "tech": ["Python", "SQLite", "FastAPI", "HTML", "CSS", "JavaScript", "Plotly.js"],
+      "status": "completed",
+      "github": "https://github.com/1dan1609/teiko-dashboard",
+      "demo": null,
+      "description": "A statistical analytics pipeline over a normalized clinical trial dataset of 3,500 subjects and 52,500 records, built with a clear scaling path from SQLite to Postgres.",
+      "bullets": [
+        "Designed a normalized SQL schema for a clinical trial dataset consisting of 3,500 subjects and 52,500 records.",
+        "Enforced data integrity via composite unique constraints, preventing cross-project subject ID collisions.",
+        "Built a statistical analysis pipeline comparing responders vs. non-responders across immune cell populations.",
+        "Authored a production scaling plan for SQLite to Postgres migration and query precomputation as trial data grows.",
+        "Built the dashboard frontend from scratch in vanilla HTML/CSS/JS with a token-based design system (tokens/layout/components split) and modular per-tab rendering, using Plotly.js for the responder-vs-non-responder statistical comparison chart."
+      ],
+      "media": {
+        "screenshots": [
+          { "src": "/media/projects/clinical-trial-dashboard/01-data-overview.png", "alt": "Clinical trial dashboard data overview tab", "caption": "Data Overview — 10,500 samples, 5 populations, 100,345 avg total cells" },
+          { "src": "/media/projects/clinical-trial-dashboard/02-responder-analysis.png", "alt": "Clinical trial dashboard responder analysis tab", "caption": "Responder Analysis — 331 responder / 325 non-responder samples, Mann-Whitney U test across immune cell populations" }
+        ]
+      },
+      "files": []
+    },
+    {
+      "id": "ai-model-defenses",
+      "name": "Practical Defenses for Deployed AI Models",
+      "tagline": "Inference-Time Adversarial & Privacy Defenses",
+      "tech": ["Python", "PyTorch"],
+      "status": "completed",
+      "github": null,
+      "demo": "https://drive.google.com/file/d/1QIX7i4ibvmZKTNCHgiLj0HblT44u446R",
+      "description": "A defense system protecting deployed AI models from adversarial attacks and membership inference, using inference-time defenses only — no retraining required.",
+      "delta": {
+        "label": "Accuracy under adversarial attack",
+        "before": "6.8%",
+        "after": "60.3%"
+      },
+      "partTwoResults": {
+        "label": "Part 2 — Training-Time + Inference-Time Defense (ResNet-18, CIFAR-100)",
+        "metrics": [
+          { "label": "Clean accuracy", "before": "40.93%", "after": "32.21%", "changePct": "-8.72%" },
+          { "label": "PGD adversarial accuracy", "before": "2.73%", "after": "6.54%", "changePct": "+139.6%" },
+          { "label": "FGSM adversarial accuracy", "before": "5.18%", "after": "7.52%", "changePct": "+45.2%" }
+        ],
+        "note": "MIA advantage was already near-zero pre-defense in this setup. Training-time and inference-time defenses proved complementary — the smaller accuracy drop here (8.72% vs. Part 1's 16.32%) suggests models trained with adversarial examples tolerate the inference-time pipeline better."
+      },
+      "bullets": [
+        "Built a defense system that protects AI models from two real attacks: one that tricks them into wrong answers, another that leaks whether someone's data was used to train them.",
+        "Raised accuracy under adversarial attack from 6.8% to 60.3% and cut membership inference advantage by about 95%, using inference-time defenses only, all without retraining the underlying model from scratch."
+      ],
+      "media": {
+        "papers": [
+          {
+            "title": "Final Report",
+            "src": "/media/projects/ai-model-defenses/defensive-ai-report.pdf",
+            "downloadName": "Practical_Defenses_for_Deployed_AI_Models.pdf",
+            "note": "Team project for UF CIS 6261: Trustworthy Machine Learning — final report co-authored with classmates Jason Ang, Rijul Bir Singh, and Abhijeet Mallick."
+          }
+        ]
+      },
+      "files": []
+    },
+    {
+      "id": "reddit-concurrency-engine",
+      "name": "Distributed Reddit Concurrency Engine and Simulator",
+      "tagline": "Lock-Free, Actor-Based Distributed Systems Simulator",
+      "tech": ["Golang", "Proto.Actor"],
+      "status": "completed",
+      "github": "https://github.com/1dan1609/go-reddit-concurrency-engine/",
+      "demo": null,
+      "description": "A lock-free, actor-based distributed system in Go simulating a Reddit backend at scale, benchmarked up to 100,000 concurrent actors.",
+      "bullets": [
+        "Designed a lock-free, actor-based distributed system in Go (Proto.Actor) simulating a Reddit backend with concurrent user registration, subreddit management, post voting, karma calculation, and direct messaging.",
+        "Modeled user activity via Zipf distribution to simulate non-uniform subreddit membership and posting.",
+        "Benchmarked performance up to 100,000 concurrent actors, profiling memory and goroutines using Go pprof."
       ],
       "files": []
     },
     {
       "id": "portfolio-site",
       "name": "Personal Portfolio Website",
-      "tagline": "AI-Powered Terminal-Style Developer Portfolio",
+      "tagline": "AI-Powered Developer Portfolio",
       "tech": ["Next.js 14", "TypeScript", "Tailwind CSS", "Framer Motion", "Gemini AI", "Vercel"],
       "status": "completed",
       "github": "https://github.com/1dan1609/portfolio-site",
       "demo": "https://vandanagrawal.vercel.app/",
-      "description": "A terminal-themed developer portfolio with an integrated Gemini AI chatbot, built end-to-end with AI assistance and deployed to production on Vercel at zero cost.",
+      "description": "A developer portfolio — this very website, actually — with an integrated Gemini AI chatbot, built end-to-end with AI assistance and deployed to production on Vercel at zero cost.",
       "bullets": [
         "Designed and deployed a full-stack Next.js 14 portfolio end-to-end using AI-assisted development, from architecture to production on Vercel.",
         "Integrated a Gemini AI chatbot with a dynamic system prompt fed by a single JSON knowledge base, enabling context-aware responses about skills and experience.",
@@ -110,7 +240,7 @@
       "tagline": "Logistics Order Management System",
       "tech": ["Python", "AVL Tree", "Hash Map", "Data Structures"],
       "status": "completed",
-      "github": null,
+      "github": "https://github.com/1dan1609/gatorGlide",
       "demo": "https://drive.google.com/drive/folders/1rBVOcPE566xk-lNvdKTlGLTzeCnuPot1",
       "description": "A high-performance logistics order management system built around dual AVL trees for O(log n) order priority and ETA synchronization, with O(1) hash-map lookups for real-time order state validation.",
       "bullets": [
@@ -118,6 +248,21 @@
         "Implemented automated state-validation using O(1) hash-map lookups and conditional logic to compare real-time timestamps against calculated departure windows for invalid order cancellations.",
         "Architected an automated validation suite to parse input test data and cross-reference system output against baseline files, ensuring 100% logical accuracy across regression testing cycles."
       ],
+      "media": {
+        "papers": [
+          {
+            "title": "Assignment Brief",
+            "src": "/media/projects/gatorglide/objective.pdf",
+            "downloadName": "GatorGlide_Assignment_Objective.pdf",
+            "note": "UF COP 5536 (Advanced Data Structures) programming project spec — the priority/ETA rules and required operations this system implements."
+          },
+          {
+            "title": "Project Report",
+            "src": "/media/projects/gatorglide/report.pdf",
+            "downloadName": "GatorGlide_Project_Report.pdf"
+          }
+        ]
+      },
       "files": []
     },
     {
@@ -136,6 +281,16 @@
         "Enforced role-based access control to limit feature access by employee post.",
         "Architected backend processes with field sanity checks to reduce vulnerability surface."
       ],
+      "media": {
+        "screenshotLayout": "masonry",
+        "screenshots": [
+          { "src": "/media/projects/medex/01-customers.png", "alt": "MEDEX customers screen", "caption": "Customers — contact search/list" },
+          { "src": "/media/projects/medex/02-stock.png", "alt": "MEDEX stock screen", "caption": "Stock — inventory add-entry form and batch-tracked table" },
+          { "src": "/media/projects/medex/03-billing.png", "alt": "MEDEX billing screen", "caption": "Billing — point-of-sale invoice creation with live total" },
+          { "src": "/media/projects/medex/04-billing-history.png", "alt": "MEDEX billing history screen", "caption": "Billing History — bill lookup by bill number with full customer and purchase record" },
+          { "src": "/media/projects/medex/05-employee-management.png", "alt": "MEDEX employee management screen", "caption": "Employee Management — add/update/remove employees; Post column shows Manager/Cashier roles" }
+        ]
+      },
       "files": []
     },
     {

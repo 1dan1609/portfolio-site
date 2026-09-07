@@ -14,47 +14,45 @@ export default function Education() {
     hidden: {},
     show: { transition: { staggerChildren: 0.15 } },
   };
-
   const item = {
     hidden: { opacity: 0, y: 20 },
     show: { opacity: 1, y: 0, transition: { duration: 0.5 } },
   };
 
   return (
-    <section id="education" ref={ref} className="py-12 px-6">
-      <div className="max-w-4xl mx-auto">
-        {/* Section header */}
+    <section id="education" className="py-16 px-6 md:pl-28">
+      <div className="max-w-6xl mx-auto" ref={ref}>
         <motion.div
           initial={{ opacity: 0, x: -20 }}
           animate={inView ? { opacity: 1, x: 0 } : {}}
           transition={{ duration: 0.5 }}
-          className="section-heading mb-12"
+          className="section-heading mb-8"
         >
-          <span className="text-terminal-green">$</span> cat education.log
+          Training Record
         </motion.div>
 
         <motion.div
           variants={container}
           initial="hidden"
           animate={inView ? "show" : "hidden"}
-          className="grid md:grid-cols-2 gap-6"
+          className="grid md:grid-cols-2 gap-4"
         >
           {education.map((edu) => (
-            <motion.div key={edu.id} variants={item} className="terminal-card p-6">
-              <div className="flex items-start gap-4">
-                <div className="w-9 h-9 rounded border border-terminal-green/30 bg-terminal-green/10 flex items-center justify-center flex-shrink-0 mt-0.5">
-                  <GraduationCap size={16} className="text-terminal-green" />
-                </div>
+            <motion.div key={edu.id} variants={item} className="forge-panel rounded-sm p-5">
+              <div className="flex items-start gap-3">
+                <GraduationCap size={18} className="text-accent-orange flex-shrink-0 mt-0.5" strokeWidth={1.75} />
                 <div className="flex-1 min-w-0">
-                  <div className="font-semibold text-terminal-white">{edu.school}</div>
-                  <div className="text-terminal-muted text-sm mt-1">{edu.degree}</div>
+                  <div className="font-sans font-bold text-sm text-ink-display uppercase tracking-wide">
+                    {edu.school}
+                  </div>
+                  <div className="font-sans text-xs text-ink-muted mt-1">{edu.degree}</div>
                   <div className="flex items-center gap-3 mt-3 flex-wrap">
-                    <span className="font-mono text-xs text-terminal-green border border-terminal-green/30 px-2 py-0.5 rounded">
+                    <span className="font-mono text-[11px] text-accent-orange border border-accent-orange/30 px-2 py-0.5 rounded-sm">
                       {edu.dates}
                     </span>
-                    <span className="font-mono text-xs text-terminal-muted">
-                      GPA: {edu.gpa}
-                    </span>
+                    {"gpa" in edu && (
+                      <span className="font-mono text-[11px] text-ink-subtle">GPA {edu.gpa}</span>
+                    )}
                   </div>
                 </div>
               </div>

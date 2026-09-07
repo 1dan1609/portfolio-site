@@ -65,6 +65,7 @@ export async function POST(req: NextRequest) {
         if (status === 429) message = "Rate limit exceeded — please wait a moment and try again.";
         if (status === 404) message = "AI model not found — check your API key configuration.";
         if (status === 403) message = "API key not authorized for this model.";
+        if (status === 503) message = "The AI model is experiencing high demand right now — please try again in a moment.";
       }
     }
     return NextResponse.json({ error: message }, { status: 500 });
