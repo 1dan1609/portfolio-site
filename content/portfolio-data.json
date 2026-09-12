@@ -133,6 +133,9 @@
         "Self-hosted with $0 cost on a hardened Oracle Cloud VM, and added dual-mode AI reporting.",
         "Audited the live deployment, patching a spoofable rate limiter, missing CSP headers, and an XSS sanitizer gap."
       ],
+      "media": {
+        "video": { "kind": "embed", "provider": "youtube", "embedId": "9olNcnW9luA" }
+      },
       "files": []
     },
     {
@@ -157,7 +160,7 @@
     },
     {
       "id": "clinical-trial-dashboard",
-      "name": "Clinical Trial Immune Cell Analytics Dashboard",
+      "name": "Teiko Dashboard",
       "tagline": "Clinical Trial Data Analytics & Statistical Pipeline",
       "tech": ["Python", "SQLite", "FastAPI", "HTML", "CSS", "JavaScript", "Plotly.js"],
       "status": "completed",
@@ -220,7 +223,7 @@
     },
     {
       "id": "reddit-concurrency-engine",
-      "name": "Distributed Reddit Concurrency Engine and Simulator",
+      "name": "Distributed Reddit Concurrency Engine and Sim",
       "tagline": "Lock-Free, Actor-Based Distributed Systems Simulator",
       "tech": ["Golang", "Proto.Actor"],
       "status": "completed",
