@@ -120,8 +120,8 @@
   "projects": [
     {
       "id": "binsight",
-      "name": "BinSight - Static Analyzer for Malware",
-      "tagline": ".exe Inspection Web App",
+      "name": "BinSight",
+      "tagline": "Static Analyzer for Malware",
       "tech": ["React", "TypeScript", "Fastify", "Docker"],
       "status": "completed",
       "github": "https://github.com/1dan1609/binSight",
