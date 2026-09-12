@@ -23,7 +23,10 @@ export default function Footer() {
           transition={{ duration: 0.5 }}
           className="text-center"
         >
-          <div className="section-heading mb-8 justify-center">Deploy</div>
+          <div className="section-heading justify-center">Deploy</div>
+          <div className="font-mono text-[10px] text-ink-subtle tracking-wide mt-1 mb-8">
+            Contact
+          </div>
 
           <div className="inline-flex items-center justify-center w-16 h-16 rounded-sm forge-panel mb-5">
             <Send size={24} className="text-accent-orange" strokeWidth={1.75} />
