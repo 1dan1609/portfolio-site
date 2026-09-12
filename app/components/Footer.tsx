@@ -24,7 +24,7 @@ export default function Footer() {
           className="text-center"
         >
           <div className="section-heading justify-center">Deploy</div>
-          <div className="font-mono text-[10px] text-ink-subtle tracking-wide mt-1 mb-8">
+          <div className="font-mono text-[10px] text-ink-subtle tracking-wide mt-1 mb-8 text-left">
             Contact
           </div>
 
@@ -36,7 +36,7 @@ export default function Footer() {
             Ready to ship.
           </h2>
           <p className="text-ink-muted text-sm max-w-md mx-auto mb-10">
-            Quietly open to the right next opportunity. Reach out directly, or
+            Open to the right next opportunity. Reach out directly, or
             query the assistant for anything not on this page.
           </p>
 
