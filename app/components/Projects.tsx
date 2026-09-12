@@ -20,10 +20,13 @@ export default function Projects() {
           initial={{ opacity: 0, x: -20 }}
           animate={inView ? { opacity: 1, x: 0 } : {}}
           transition={{ duration: 0.5 }}
-          className="section-heading mb-8"
+          className="section-heading"
         >
           Releases
         </motion.div>
+        <div className="font-mono text-[10px] text-ink-subtle tracking-wide mt-1 mb-8">
+          Projects
+        </div>
 
         <div className="flex flex-col gap-3">
           {projects.map((project, idx) => {

@@ -26,10 +26,13 @@ export default function Education() {
           initial={{ opacity: 0, x: -20 }}
           animate={inView ? { opacity: 1, x: 0 } : {}}
           transition={{ duration: 0.5 }}
-          className="section-heading mb-8"
+          className="section-heading"
         >
           Training Record
         </motion.div>
+        <div className="font-mono text-[10px] text-ink-subtle tracking-wide mt-1 mb-8">
+          Education
+        </div>
 
         <motion.div
           variants={container}

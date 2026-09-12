@@ -23,10 +23,13 @@ export default function Experience() {
           initial={{ opacity: 0, x: -20 }}
           animate={inView ? { opacity: 1, x: 0 } : {}}
           transition={{ duration: 0.5 }}
-          className="section-heading mb-8"
+          className="section-heading"
         >
           Build Log
         </motion.div>
+        <div className="font-mono text-[10px] text-ink-subtle tracking-wide mt-1 mb-8">
+          Experience
+        </div>
 
         <div className="flex flex-col gap-3">
           {experience.map((job, idx) => {
@@ -166,7 +169,10 @@ export default function Experience() {
           transition={{ delay: 0.5 }}
           className="mt-10"
         >
-          <div className="section-heading mb-5">Field Deployments</div>
+          <div className="section-heading">Field Deployments</div>
+          <div className="font-mono text-[10px] text-ink-subtle tracking-wide mt-1 mb-5">
+            Competitions
+          </div>
           <div className="grid sm:grid-cols-2 gap-4">
             {competitions.map((comp) => (
               <div key={comp.id} className="forge-panel rounded-sm p-4">

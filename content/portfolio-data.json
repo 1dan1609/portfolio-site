@@ -119,6 +119,23 @@
   ],
   "projects": [
     {
+      "id": "binsight",
+      "name": "BinSight - Static Analyzer for Malware",
+      "tagline": ".exe Inspection Web App",
+      "tech": ["React", "TypeScript", "Fastify", "Docker"],
+      "status": "completed",
+      "github": "https://github.com/1dan1609/binSight",
+      "demo": "https://binsight.duckdns.org/",
+      "description": "A full-stack malware analysis dashboard that parses PE files entirely client-side in a sandboxed Web Worker, then generates an AI-powered analysis report.",
+      "bullets": [
+        "Built a full-stack malware analysis dashboard parsing files entirely client-side in a sandboxed Web Worker.",
+        "Shipped a 6-gate CI/CD pipeline using GitHub Actions, catching 2 critical CVEs before release.",
+        "Self-hosted with $0 cost on a hardened Oracle Cloud VM, and added dual-mode AI reporting.",
+        "Audited the live deployment, patching a spoofable rate limiter, missing CSP headers, and an XSS sanitizer gap."
+      ],
+      "files": []
+    },
+    {
       "id": "civic-ai",
       "name": "CivicAI",
       "tagline": "Municipal Research & Analysis Engine",
